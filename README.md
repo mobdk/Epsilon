@@ -4,6 +4,7 @@ In this PoC I am addressing the timer issue that exist in Defender.
 This PoC successfully execute Mimikatz with no change to the orginal code, Mimikatz is converted to shellcode and embedded in source code, it uses the
 following syscalls:
 
+```
 ZwOpenProcess
 ZwAllocateVirtualMemory
 ZwProtectVirtualMemory
@@ -13,6 +14,7 @@ ZwOpenThread
 ZwQueueApcThread
 ZwResumeThread
 ZwClose
+```
 
 If one insert a timer delay with value 15 seconds, anything below does not work, it breaks the engine detection logic and Mimikatz execute successfully. 
 The delay can be inserted anywhere, between ZwOpenProcess and ZwClose.
